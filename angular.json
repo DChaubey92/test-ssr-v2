@@ -65,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "angular-ssr-app:build:production"
+              "buildTarget": "angular-ssr-app:build:production"
             },
             "development": {
-              "browserTarget": "angular-ssr-app:build:development"
+              "buildTarget": "angular-ssr-app:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -76,7 +76,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-ssr-app:build"
+            "buildTarget": "angular-ssr-app:build"
           }
         },
         "test": {
@@ -124,11 +124,11 @@
           "builder": "@angular-devkit/build-angular:ssr-dev-server",
           "configurations": {
             "development": {
-              "browserTarget": "angular-ssr-app:build:development",
+              "buildTarget": "angular-ssr-app:build:development",
               "serverTarget": "angular-ssr-app:server:development"
             },
             "production": {
-              "browserTarget": "angular-ssr-app:build:production",
+              "buildTarget": "angular-ssr-app:build:production",
               "serverTarget": "angular-ssr-app:server:production"
             }
           },
@@ -143,11 +143,11 @@
           },
           "configurations": {
             "production": {
-              "browserTarget": "angular-ssr-app:build:production",
+              "buildTarget": "angular-ssr-app:build:production",
               "serverTarget": "angular-ssr-app:server:production"
             },
             "development": {
-              "browserTarget": "angular-ssr-app:build:development",
+              "buildTarget": "angular-ssr-app:build:development",
               "serverTarget": "angular-ssr-app:server:development"
             }
           },
@@ -155,5 +155,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "8a9cc05d-3f64-458d-8189-f83e986d7d58"
   }
 }
