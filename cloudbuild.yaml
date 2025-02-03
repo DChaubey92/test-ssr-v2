@@ -1,39 +1,7 @@
 steps:
-  # Step 1: Install dependencies
-  - name: "node:18"  # Use Node.js 18 (Ensure it matches your package.json version)
-    entrypoint: npm
-    args: ["install"]
-
-  # Step 2: Build the Angular SSR app
-  - name: "node:18"
-    entrypoint: npm
-    args: ["run", "build:ssr"]
-
-  # Step 3: Build Docker image
-  - name: "gcr.io/cloud-builders/docker"
-    args: ["build", "-t", "gcr.io/$PROJECT_ID/angular-ssr-app", "."]
-
-  # Step 4: Push Docker image to Google Container Registry
-  - name: "gcr.io/cloud-builders/docker"
-    args: ["push", "gcr.io/$PROJECT_ID/angular-ssr-app"]
-
-  # Step 5: Deploy to Cloud Run (Optional)
-  - name: "gcr.io/cloud-builders/gcloud"
-    args:
-      [
-        "run",
-        "deploy",
-        "angular-ssr-app",
-        "--image",
-        "gcr.io/$PROJECT_ID/angular-ssr-app",
-        "--platform",
-        "managed",
-        "--region",
-        "us-central1",
-        "--allow-unauthenticated"
-      ]
-
-images:
-  - "gcr.io/$PROJECT_ID/angular-ssr-app"
-
-timeout: 1200s  # Increase timeout if needed
+  - name: 'gcr.io/k8s-skaffold/pack'
+    args: ['build', '--builder=gcr.io/paketo-buildpacks/builder:base']
+    timeout: '900s'
+    id: 'build'
+    env:
+      - 'PACK_MEMORY=2048m'
