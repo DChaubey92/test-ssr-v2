@@ -40,8 +40,7 @@
                 {
                   "type": "initial",
                   "maximumWarning": "500kb",
-                  "maximumError": "1mb",
-                  "timeout": 120000
+                  "maximumError": "1mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -64,12 +63,12 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
-          "configurations": {
+          "configurations": {            
             "production": {
-              "buildTarget": "angular-ssr-app:build:production"
+              "browserTarget": "angular-ssr-app:build:production"
             },
             "development": {
-              "buildTarget": "angular-ssr-app:build:development"
+              "browserTarget": "angular-ssr-app:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -125,11 +124,11 @@
           "builder": "@angular-devkit/build-angular:ssr-dev-server",
           "configurations": {
             "development": {
-              "buildTarget": "angular-ssr-app:build:development",
+              "browserTarget": "angular-ssr-app:build:development",
               "serverTarget": "angular-ssr-app:server:development"
             },
             "production": {
-              "buildTarget": "angular-ssr-app:build:production",
+              "browserTarget": "angular-ssr-app:build:production",
               "serverTarget": "angular-ssr-app:server:production"
             }
           },
@@ -138,17 +137,15 @@
         "prerender": {
           "builder": "@angular-devkit/build-angular:prerender",
           "options": {
-            "routes": [
-              "/"
-            ]
+            "routes": ["/"]
           },
           "configurations": {
             "production": {
-              "buildTarget": "angular-ssr-app:build:production",
+              "browserTarget": "angular-ssr-app:build:production",
               "serverTarget": "angular-ssr-app:server:production"
             },
             "development": {
-              "buildTarget": "angular-ssr-app:build:development",
+              "browserTarget": "angular-ssr-app:build:development",
               "serverTarget": "angular-ssr-app:server:development"
             }
           },
